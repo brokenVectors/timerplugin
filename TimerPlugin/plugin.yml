@@ -1,0 +1,14 @@
+main: com.brokenvectors.timerplugin.Main
+name: TimerPlugin
+version: 0.0.1
+api-version: 1.17
+
+commands:
+   startTimer:
+      description: start ze timer
+      usage: /startTimer <player>
+      permission: timerplugin.start
+   stopTimer:
+      description: stop ze timer
+      usage: /stopTimer <player>
+      permission: timerplugin.stop
