@@ -27,10 +27,17 @@ public class StartTimer implements CommandExecutor {
 			player.sendMessage("Timer has already started!");
 			return true;
 		}
-		
 		BukkitRunnable runnable = new BukkitRunnable() {
 		    @Override
 		    public void run() {
+		    	
+		    	if(!player.isOnline()) { // there is probably a better way of doing this lol
+		    		// all this code is taken from the StopTimer.java
+		    		// i am not very good at java
+		    		BukkitRunnable playerRunnable = runnables.get(player); 
+		    		playerRunnable.cancel();
+					runnables.remove(player);
+		    	}
 		    	int totalMillis = (int)System.currentTimeMillis() - startMs;
 		    	
 		    	
@@ -40,8 +47,9 @@ public class StartTimer implements CommandExecutor {
 		    	int millis = totalMillis % 1000;
 		    	int seconds = totalSeconds % 60;
 		    	int minutes = totalMinutes;
+		    	int tenths = (int) Math.floor(millis / 100);
 		    	
-		    	String str = String.format("%d:%02d:%02d", minutes, seconds, millis);
+		    	String str = String.format("%d:%02d.%d", minutes, seconds, tenths);
 		    	TextComponent component = new TextComponent(str);
 		        player.spigot().sendMessage(ChatMessageType.ACTION_BAR, component);
 		        
@@ -50,7 +58,7 @@ public class StartTimer implements CommandExecutor {
 		
 		runnables.put(player, runnable);
 		
-		runnable.runTaskTimer(this.plugin, 0L, 1L);
+		runnable.runTaskTimer(this.plugin, 0L, 10L);
 		return true;
 	}
 }

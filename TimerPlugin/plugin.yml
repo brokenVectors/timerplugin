@@ -1,6 +1,6 @@
 main: com.brokenvectors.timerplugin.Main
 name: TimerPlugin
-version: 0.0.1
+version: 1.0.0
 api-version: 1.17
 
 commands:

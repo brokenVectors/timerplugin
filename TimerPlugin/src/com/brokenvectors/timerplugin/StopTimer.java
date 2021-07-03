@@ -24,6 +24,9 @@ public class StopTimer implements CommandExecutor {
 			runnable.cancel();
 			runnables.remove(player);
 		}
+		else {
+			player.sendMessage("You can't stop the timer if you haven't already started it!");
+		}
 		return true;
 	}
 }
