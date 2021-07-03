@@ -1,5 +1,6 @@
 # TimerPlugin
 Spigot plugin for timers, useful for parkour. Tested on 1.17.
+https://www.spigotmc.org/resources/timerplugin.93833/
 # Commands
 /starttimer [player]: Starts and displays the timer for given player.
   
